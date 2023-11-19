@@ -45,6 +45,7 @@ function onClickSubmit(evt) {
   if (query) {
     clearGellery();
     page = 1;
+    observer.unobserve(refs.jsGuard);
     getPicture(query, page, per_page)
       .then(({ totalHits, hits }) => {
         if (totalHits === 0) {
@@ -60,6 +61,7 @@ function onClickSubmit(evt) {
       .catch(err => console.log(err));
   }
   evt.currentTarget.reset();
+  // smoothScroll();
 }
 
 function loadMore(entries, optionsObserver) {
